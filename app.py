@@ -10,7 +10,7 @@ from resources.item import Item, ItemList
 from resources.store import Store, StoreList # obs: I need to import along/beyond other reasons, because sqlalchemy need to see the class taht will be create in dadtabase
 
 app = Flask(__name__) # It's a special variable that gets as value the string "__main__" when you’re executing the script
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL','sqlite:///data.db') # connection with system variable (heroku system as well) adn if don't find it it will run 'sqlite:///data.db'. So, in my case, I don't have 'DATABASE_URL' defined locally, but heroku has and, because of that, I can run sqlite locally and postgres in heroku
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL', 'sqlite:///data.db') # connection with system variable (heroku system as well) adn if don't find it it will run 'sqlite:///data.db'. So, in my case, I don't have 'DATABASE_URL' defined locally, but heroku has and, because of that, I can run sqlite locally and postgres in heroku
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False # modification necessary to config my db
 app.secret_key = 'jose'
 api = Api(app)
