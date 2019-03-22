@@ -16,7 +16,7 @@ class UserRegister(Resource):
     def post(self):
         data = UserRegister.parser.parse_args()
         if UserModel.find_by_username(data["username"]):
-            return {'mesage': "An user with this username: '{}' already exists".format(data["username"])}, 400
+            return {'message': "An user with this username: '{}' already exists".format(data["username"])}, 400
         user = UserModel(**data)
         user.save_to_db()
         return {"message": "User created sucessfully"}, 201
